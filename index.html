@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asaf Mohammed</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #faf9f7;
+  --bg2: #f2f0ec;
+  --ink: #1c1b18;
+  --ink2: #3d3b35;
+  --muted: #8c8878;
+  --accent: #1a4a6b;
+  --rule: #dedad2;
+  --card: #ffffff;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'IBM Plex Sans', sans-serif;
+  font-size: 15px;
+  line-height: 1.75;
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 0 32px;
+}
+
+/* TOP BAR */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 0 28px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 64px;
+}
+
+.topbar-name {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+  letter-spacing: 0.03em;
+}
+
+.topbar-nav {
+  display: flex;
+  gap: 28px;
+  list-style: none;
+}
+
+.topbar-nav a {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.topbar-nav a:hover { color: var(--accent); }
+
+/* INTRO */
+.intro {
+  margin-bottom: 80px;
+  animation: up 0.5s ease both;
+}
+
+.intro-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.intro-headline {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(36px, 5vw, 54px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 28px;
+  letter-spacing: -0.5px;
+}
+
+.intro-headline em {
+  font-style: italic;
+  color: var(--muted);
+}
+
+.intro-body {
+  font-size: 16px;
+  color: var(--ink2);
+  line-height: 1.85;
+  max-width: 620px;
+}
+
+.intro-body p + p {
+  margin-top: 16px;
+}
+
+.intro-body a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-color: rgba(26, 74, 107, 0.3);
+  transition: text-decoration-color 0.2s;
+}
+
+.intro-body a:hover {
+  text-decoration-color: var(--accent);
+}
+
+/* SECTION */
+.section {
+  margin-bottom: 72px;
+}
+
+.section-label {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 28px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* BACKGROUND — two-column fact layout */
+.bg-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 0;
+}
+
+.bg-row {
+  display: contents;
+}
+
+.bg-row-period {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+  padding-right: 24px;
+  letter-spacing: 0.02em;
+}
+
+.bg-row-content {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.bg-row:last-child .bg-row-period,
+.bg-row:last-child .bg-row-content {
+  border-bottom: none;
+}
+
+.bg-company {
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.bg-role {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.bg-desc {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.75;
+}
+
+.bg-note {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--accent);
+  margin-top: 8px;
+  opacity: 0.85;
+}
+
+/* BUILT — project list */
+.built-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.built-item {
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: start;
+  transition: background 0.15s;
+}
+
+.built-item:first-child { padding-top: 0; }
+.built-item:last-child { border-bottom: none; }
+
+.built-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 6px;
+  line-height: 1.3;
+}
+
+.built-desc {
+  font-size: 14px;
+  color: var(--ink2);
+  line-height: 1.8;
+  margin-bottom: 10px;
+  max-width: 540px;
+}
+
+.built-outcome {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.02em;
+}
+
+.built-outcome span {
+  color: var(--accent);
+}
+
+.built-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 5px;
+  padding-top: 4px;
+  flex-shrink: 0;
+}
+
+.stack-item {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  text-align: right;
+}
+
+/* THINKING — the unfair advantage section, written as prose */
+.thinking-body {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.9;
+}
+
+.thinking-body p + p {
+  margin-top: 18px;
+}
+
+.thinking-body strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.thinking-pull {
+  border-left: 2px solid var(--rule);
+  padding: 4px 0 4px 20px;
+  margin: 24px 0;
+  font-family: 'Playfair Display', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--ink2);
+  line-height: 1.6;
+}
+
+/* SKILLS — minimal inline list */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+
+.skill-row {
+  display: contents;
+}
+
+.skill-category {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+  padding-right: 20px;
+}
+
+.skill-items {
+  font-size: 13px;
+  color: var(--ink2);
+  padding: 14px 0;
+  border-bottom: 1px solid var(--rule);
+  line-height: 1.6;
+}
+
+/* CONTACT — understated */
+.contact-block {
+  padding: 40px 0 0;
+  border-top: 1px solid var(--rule);
+}
+
+.contact-body {
+  font-size: 15px;
+  color: var(--ink2);
+  line-height: 1.8;
+  margin-bottom: 24px;
+  max-width: 520px;
+}
+
+.contact-links {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(26, 74, 107, 0.25);
+  padding-bottom: 2px;
+  transition: border-color 0.15s;
+}
+
+.contact-link:hover {
+  border-color: var(--accent);
+}
+
+/* FOOTER */
+footer {
+  margin-top: 64px;
+  padding: 24px 0 40px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-copy {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+.footer-location {
+  font-family: 'IBM Plex Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+/* ANIMATIONS */
+@keyframes up {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  body { padding: 0 20px; }
+  .topbar { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .bg-grid { grid-template-columns: 1fr; }
+  .bg-row-period { padding: 16px 0 4px; border-bottom: none; font-size: 10px; }
+  .bg-row-content { padding-top: 0; }
+  .built-item { grid-template-columns: 1fr; }
+  .built-stack { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+  .skills-grid { grid-template-columns: 1fr; }
+  .skill-category { border-bottom: none; padding-bottom: 4px; padding-top: 14px; }
+  .skill-items { padding-top: 0; }
+  footer { flex-direction: column; align-items: flex-start; gap: 6px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<header class="topbar">
+  <span class="topbar-name">Asaf Mohammed</span>
+  <ul class="topbar-nav">
+    <li><a href="#built">Built</a></li>
+    <li><a href="#background">Background</a></li>
+    <li><a href="#thinking">Thinking</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</header>
+
+<!-- INTRO -->
+<section class="intro">
+  <div class="intro-role">GTM Engineer · Data · Automation</div>
+  <h1 class="intro-headline">
+    I work at the intersection of<br>
+    data, automation, <em>and revenue.</em>
+  </h1>
+  <div class="intro-body">
+    <p>
+      Five years building data and automation systems inside SaaS companies — most recently at ZoomInfo, where I built internal tooling for the Sales and Customer Success teams that run on GTM intelligence for a living.
+    </p>
+    <p>
+      My work sits in the layer most people don't think about: the pipelines, integrations, and workflows that turn raw data into things sales reps can actually act on. I'm also building <a href="https://pinghook.dev" target="_blank">PingHook</a> — a webhook notification microservice I shipped independently.
+    </p>
+  </div>
+</section>
+
+<!-- BUILT -->
+<section class="section" id="built">
+  <div class="section-label reveal">Things I've built</div>
+  <div class="built-list">
+
+    <div class="built-item reveal">
+      <div>
+        <div class="built-name">AI Lead Triage & Personalization Engine</div>
+        <p class="built-desc">
+          An end-to-end inbound pipeline in n8n — webhook ingests form submissions, runs parallel branches for AI enrichment and company normalization, classifies leads into Enterprise / Mid-Market / SMB tiers using Gemini, generates personalised outreach hooks per lead, and delivers a real-time Telegram notification via PingHook on every submission.
+        </p>
+        <div class="built-outcome">
+          <span>↓ 85% reduction</span> in sales research time per lead
+        </div>
+      </div>
+      <div class="built-stack">
+        <span class="stack-item">n8n</span>
+        <span class="stack-item">Gemini LLM</span>
+        <span class="stack-item">Airtable</span>
+        <span class="stack-item">Webhooks</span>
+        <span class="stack-item">JavaScript</span>
+      </div>
+    </div>
+
+    <div class="built-item reveal">
+      <div>
+        <div class="built-name">PingHook — Webhook Notification Microservice</div>
+        <p class="built-desc">
+          A production-ready service that delivers real-time event signals from CRMs, automation platforms, and CI/CD pipelines to Telegram. Label-based routing, per-user rate limiting, payload validation, and a 56-test suite. Shipped as zero-config SaaS — no signup, no dashboard. I own the full product lifecycle: schema, API, security, QA, and deployment.
+        </p>
+        <div class="built-outcome">
+          Live at <span><a href="https://pinghook.dev" target="_blank" style="color:var(--accent);text-decoration:none;">pinghook.dev</a></span>
+        </div>
+      </div>
+      <div class="built-stack">
+        <span class="stack-item">FastAPI</span>
+        <span class="stack-item">Python</span>
+        <span class="stack-item">Supabase</span>
+        <span class="stack-item">Telegram Bot API</span>
+      </div>
+    </div>
+
+    <div class="built-item reveal">
+      <div>
+        <div class="built-name">AI Data Assistant for Account Managers <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;"> — ZoomInfo</span></div>
+        <p class="built-desc">
+          An internal tool that let Account Managers query live customer data in natural language instead of filing analyst requests. I designed the schema, engineered prompts that reliably translated questions into accurate Snowflake SQL, and migrated the interface from Streamlit into a Slack bot — so users never had to leave where they already worked. Adopted across the team without a single training session.
+        </p>
+        <div class="built-outcome">
+          <span>↓ Hours to seconds</span> · Zero onboarding · Team-wide adoption
+        </div>
+      </div>
+      <div class="built-stack">
+        <span class="stack-item">Snowflake</span>
+        <span class="stack-item">LLM Prompting</span>
+        <span class="stack-item">SQL Generation</span>
+        <span class="stack-item">Slack Bot API</span>
+      </div>
+    </div>
+
+    <div class="built-item reveal">
+      <div>
+        <div class="built-name">Revenue Credit Audit Dashboard <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;"> — ZoomInfo</span></div>
+        <p class="built-desc">
+          A Tableau dashboard tracking free credits issued across the customer base, segmented by sales stage and customer tier — SMB, Mid-Market, Enterprise, Strategic. Time-series analysis surfaced cost patterns that informed retention and expansion decisions for the Revenue Operations team.
+        </p>
+        <div class="built-outcome">
+          Used by <span>Revenue Operations</span> for churn and expansion decisions
+        </div>
+      </div>
+      <div class="built-stack">
+        <span class="stack-item">Tableau</span>
+        <span class="stack-item">Snowflake SQL</span>
+        <span class="stack-item">Customer Segmentation</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- BACKGROUND -->
+<section class="section" id="background">
+  <div class="section-label reveal">Background</div>
+  <div class="bg-grid reveal">
+
+    <div class="bg-row">
+      <div class="bg-row-period">2026 – now</div>
+      <div class="bg-row-content">
+        <div class="bg-company">Lloyds List Intelligence</div>
+        <div class="bg-role">Data Services Analyst</div>
+        <div class="bg-desc">Structured data delivery for clients per SLA. REST API troubleshooting and data sync debugging via Postman across integrated systems.</div>
+      </div>
+    </div>
+
+    <div class="bg-row">
+      <div class="bg-row-period">2023 – 2025</div>
+      <div class="bg-row-content">
+        <div class="bg-company">ZoomInfo</div>
+        <div class="bg-role">Data Analyst, GTM Intelligence Platform</div>
+        <div class="bg-desc">
+          Optimised Snowflake SQL powering GTM workflows for Sales and Customer Success. Built revenue analytics dashboards. Automated reporting pipelines with Python and PySpark. Delivered 100+ data enrichments supporting lead qualification and pipeline workflows. Cross-functional partner to Sales, CS, and Product.
+        </div>
+        <div class="bg-note">→ Built internal AI tooling used across the Account Management team</div>
+      </div>
+    </div>
+
+    <div class="bg-row">
+      <div class="bg-row-period">2020 – 2023</div>
+      <div class="bg-row-content">
+        <div class="bg-company">Altrata</div>
+        <div class="bg-role">Senior Research Analyst</div>
+        <div class="bg-desc">Market and business intelligence reports for Sales and Client Success. SQL analysis and recurring reporting. Data migration with exposure to warehousing and governance. Mentored junior analysts.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- THINKING / UNFAIR ADVANTAGE — written as prose, no comparison table -->
+<section class="section" id="thinking">
+  <div class="section-label reveal">How I think about this work</div>
+  <div class="thinking-body reveal">
+    <p>
+      Most people who work in GTM either understand the strategy or can configure the tools. The gap — understanding the data infrastructure underneath, and being able to build against it — is where I spend most of my time.
+    </p>
+
+    <div class="thinking-pull">
+      "I know what ZoomInfo does under the hood. I built systems on top of the same data infrastructure that their Sales teams depend on."
+    </div>
+
+    <p>
+      Two years at ZoomInfo meant working directly with the data that powers enterprise GTM motions — enrichment pipelines, account intelligence, lead qualification workflows. I wasn't using the product as a customer. I was building internal tooling on top of it, for the people who ran revenue at one of the GTM industry's most recognised platforms.
+    </p>
+
+    <p>
+      That changes how I read a GTM stack. When I look at a company's enrichment setup or CRM routing logic, I understand not just the tooling, but the data quality and signal logic underneath it — where the gaps tend to form, and why they're hard to fix without going a layer deeper.
+    </p>
+
+    <p>
+      <strong>On AI in GTM:</strong> I've used LLMs in production for lead qualification and enrichment — not as wrappers around existing tools, but as reasoning layers that handle classification, normalisation, and personalisation at scale. The lead triage engine I built reduced manual research time by 85%. The AI data assistant I built at ZoomInfo replaced analyst requests with natural language queries, without training anyone. Both shipped. Both got used.
+    </p>
+
+    <p>
+      I also build products independently. PingHook started as infrastructure I needed for my own GTM workflows and became a standalone microservice. Owning the full lifecycle — schema design, API build, security hardening, testing, deployment — changes how you think about building internal systems too.
+    </p>
+  </div>
+
+  <!-- SKILLS — inline, not a sales grid -->
+  <div style="margin-top: 40px;" class="reveal">
+    <div class="section-label">Tools & technologies</div>
+    <div class="skills-grid">
+      <div class="skill-row">
+        <div class="skill-category">Automation</div>
+        <div class="skill-items">n8n, Zapier, REST APIs, Webhooks, Python</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">CRM & GTM</div>
+        <div class="skill-items">HubSpot, Salesforce, ZoomInfo SalesOS, Airtable</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Data</div>
+        <div class="skill-items">Snowflake, SQL, Python, PySpark, Tableau</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">AI & LLMs</div>
+        <div class="skill-items">Gemini, Prompt Engineering, RAG, AI Agents</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Engineering</div>
+        <div class="skill-items">FastAPI, Supabase, Streamlit, Git, Python</div>
+      </div>
+      <div class="skill-row">
+        <div class="skill-category">Certifications</div>
+        <div class="skill-items">Claude Code in Action (Anthropic), SQL (HackerRank)</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-block" id="contact">
+  <div class="section-label reveal">Contact</div>
+  <p class="contact-body reveal">
+    I'm based in Chennai. If something here is relevant to what you're working on, feel free to reach out.
+  </p>
+  <div class="contact-links reveal">
+    <a href="mailto:asafmohammed21@gmail.com" class="contact-link">asafmohammed21@gmail.com</a>
+    <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="contact-link">LinkedIn</a>
+    <a href="https://github.com/asafmd" target="_blank" class="contact-link">GitHub</a>
+    <a href="https://pinghook.dev" target="_blank" class="contact-link">PingHook</a>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Asaf Mohammed · 2026</span>
+  <span class="footer-location">Chennai, India</span>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
