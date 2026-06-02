@@ -4,17 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Asaf Mohammed</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #faf9f7;
-  --bg2: #f2f0ec;
-  --ink: #1c1b18;
-  --ink2: #3d3b35;
-  --muted: #8c8878;
-  --accent: #1a4a6b;
-  --rule: #dedad2;
-  --card: #ffffff;
+  --bg: #0e0e0c;
+  --bg2: #161614;
+  --bg3: #1e1e1b;
+  --ink: #eceae4;
+  --ink2: #b0ad a4;
+  --muted: #6a6860;
+  --accent: #d4a843;
+  --accent2: #4a9b7a;
+  --accent3: #6b8fd4;
+  --rule: #2a2a26;
+  --card: #1a1a17;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -23,631 +26,838 @@ html { scroll-behavior: smooth; }
 body {
   background: var(--bg);
   color: var(--ink);
-  font-family: 'IBM Plex Sans', sans-serif;
-  font-size: 15px;
-  line-height: 1.75;
-  max-width: 780px;
-  margin: 0 auto;
-  padding: 0 32px;
+  font-family: 'Sora', sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  overflow-x: hidden;
 }
 
-/* TOP BAR */
-.topbar {
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 32px 0 28px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 64px;
+  padding: 20px 56px;
+  transition: background 0.3s, border-color 0.3s;
+  border-bottom: 1px solid transparent;
 }
-
-.topbar-name {
-  font-family: 'IBM Plex Mono', monospace;
+nav.scrolled {
+  background: rgba(14,14,12,0.92);
+  backdrop-filter: blur(12px);
+  border-bottom-color: var(--rule);
+}
+.nav-logo {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 13px;
   font-weight: 500;
-  color: var(--ink);
-  letter-spacing: 0.03em;
+  color: var(--accent);
+  letter-spacing: 0.05em;
 }
-
-.topbar-nav {
-  display: flex;
-  gap: 28px;
-  list-style: none;
+.nav-links {
+  display: flex; gap: 32px; list-style: none;
 }
-
-.topbar-nav a {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.topbar-nav a:hover { color: var(--accent); }
-
-/* INTRO */
-.intro {
-  margin-bottom: 80px;
-  animation: up 0.5s ease both;
-}
-
-.intro-role {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+.nav-links a {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--muted);
-  margin-bottom: 20px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--accent); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  padding-top: 80px;
+  border-bottom: 1px solid var(--rule);
 }
 
-.intro-headline {
-  font-family: 'Playfair Display', Georgia, serif;
-  font-size: clamp(36px, 5vw, 54px);
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--ink);
-  margin-bottom: 28px;
-  letter-spacing: -0.5px;
+.hero-left {
+  padding: 72px 56px 72px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid var(--rule);
 }
 
-.intro-headline em {
-  font-style: italic;
-  color: var(--muted);
+.hero-right {
+  padding: 72px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg2);
 }
 
-.intro-body {
-  font-size: 16px;
-  color: var(--ink2);
-  line-height: 1.85;
-  max-width: 620px;
-}
-
-.intro-body p + p {
-  margin-top: 16px;
-}
-
-.intro-body a {
-  color: var(--accent);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(26, 74, 107, 0.3);
-  transition: text-decoration-color 0.2s;
-}
-
-.intro-body a:hover {
-  text-decoration-color: var(--accent);
-}
-
-/* SECTION */
-.section {
-  margin-bottom: 72px;
-}
-
-.section-label {
-  font-family: 'IBM Plex Mono', monospace;
+.hero-tag {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 28px;
-  padding-bottom: 10px;
-  border-bottom: 1px solid var(--rule);
+  color: var(--accent);
+  margin-bottom: 24px;
+  animation: up 0.5s ease both;
 }
 
-/* BACKGROUND — two-column fact layout */
-.bg-grid {
-  display: grid;
-  grid-template-columns: 140px 1fr;
-  gap: 0;
-}
-
-.bg-row {
-  display: contents;
-}
-
-.bg-row-period {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  padding: 18px 0;
-  border-bottom: 1px solid var(--rule);
-  padding-right: 24px;
-  letter-spacing: 0.02em;
-}
-
-.bg-row-content {
-  padding: 18px 0;
-  border-bottom: 1px solid var(--rule);
-}
-
-.bg-row:last-child .bg-row-period,
-.bg-row:last-child .bg-row-content {
-  border-bottom: none;
-}
-
-.bg-company {
-  font-weight: 500;
-  font-size: 14px;
+.hero-name {
+  font-family: 'Lora', Georgia, serif;
+  font-size: clamp(42px, 5.5vw, 68px);
+  font-weight: 600;
+  line-height: 1.1;
+  letter-spacing: -1px;
   color: var(--ink);
-  margin-bottom: 2px;
+  margin-bottom: 12px;
+  animation: up 0.5s 0.08s ease both;
 }
 
-.bg-role {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+.hero-sub {
+  font-family: 'Lora', serif;
+  font-style: italic;
+  font-size: clamp(16px, 2vw, 20px);
   color: var(--muted);
-  margin-bottom: 8px;
-  letter-spacing: 0.02em;
+  margin-bottom: 32px;
+  animation: up 0.5s 0.14s ease both;
+  font-weight: 400;
 }
 
-.bg-desc {
+.hero-body {
   font-size: 14px;
-  color: var(--ink2);
+  color: #8a8880;
+  line-height: 1.85;
+  max-width: 400px;
+  animation: up 0.5s 0.2s ease both;
+}
+
+.hero-body strong { color: var(--ink); font-weight: 500; }
+
+.hero-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 36px;
+  animation: up 0.5s 0.26s ease both;
+  flex-wrap: wrap;
+}
+
+.hlink {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212,168,67,0.25);
+  padding-bottom: 2px;
+  transition: border-color 0.2s;
+}
+.hlink:hover { border-color: var(--accent); }
+
+/* ── VENN DIAGRAM ── */
+.venn-wrap {
+  width: 100%;
+  max-width: 460px;
+  animation: up 0.5s 0.2s ease both;
+}
+
+.venn-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.venn-svg-wrap {
+  position: relative;
+  width: 100%;
+}
+
+/* ── SECTIONS ── */
+.section {
+  padding: 80px 56px;
+  border-bottom: 1px solid var(--rule);
+}
+.section:nth-child(even) { background: var(--bg2); }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.section-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.section-title {
+  font-family: 'Lora', serif;
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+
+.section-rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ── CARDS ── */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+
+.card {
+  background: var(--card);
+  padding: 28px 24px;
+  transition: background 0.2s;
+}
+.card:hover { background: var(--bg3); }
+
+.card-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.card-body {
+  font-size: 12px;
+  color: var(--muted);
   line-height: 1.75;
 }
 
-.bg-note {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--accent);
-  margin-top: 8px;
-  opacity: 0.85;
+.card-tools {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
-/* BUILT — project list */
-.built-list {
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  background: var(--bg3);
+  border: 1px solid var(--rule);
+  padding: 2px 7px;
+}
+
+/* ── WORK LIST ── */
+.work-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
-.built-item {
-  padding: 28px 0;
-  border-bottom: 1px solid var(--rule);
+.work-item {
   display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 24px;
+  grid-template-columns: 100px 1fr auto;
+  gap: 32px;
   align-items: start;
-  transition: background 0.15s;
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  transition: padding-left 0.2s;
+}
+.work-item:first-child { padding-top: 0; }
+.work-item:last-child { border-bottom: none; }
+.work-item:hover { padding-left: 6px; }
+
+.work-year {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  color: var(--muted);
+  padding-top: 3px;
 }
 
-.built-item:first-child { padding-top: 0; }
-.built-item:last-child { border-bottom: none; }
-
-.built-name {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
+.work-name {
+  font-family: 'Lora', serif;
+  font-size: 16px;
   font-weight: 600;
   color: var(--ink);
   margin-bottom: 6px;
   line-height: 1.3;
 }
 
-.built-desc {
-  font-size: 14px;
-  color: var(--ink2);
-  line-height: 1.8;
+.work-desc {
+  font-size: 13px;
+  color: #7a7870;
+  line-height: 1.75;
   margin-bottom: 10px;
-  max-width: 540px;
 }
 
-.built-outcome {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  letter-spacing: 0.02em;
+.work-result {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent2);
+  letter-spacing: 0.03em;
 }
 
-.built-outcome span {
-  color: var(--accent);
-}
-
-.built-stack {
+.work-tags {
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 5px;
-  padding-top: 4px;
+  gap: 4px;
+  padding-top: 3px;
   flex-shrink: 0;
 }
 
-.stack-item {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  text-align: right;
+/* ── EXPERIENCE ── */
+.exp-list {
+  display: flex;
+  flex-direction: column;
 }
 
-/* THINKING — the unfair advantage section, written as prose */
-.thinking-body {
-  font-size: 15px;
-  color: var(--ink2);
-  line-height: 1.9;
-}
-
-.thinking-body p + p {
-  margin-top: 18px;
-}
-
-.thinking-body strong {
-  color: var(--ink);
-  font-weight: 500;
-}
-
-.thinking-pull {
-  border-left: 2px solid var(--rule);
-  padding: 4px 0 4px 20px;
-  margin: 24px 0;
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  font-size: 17px;
-  color: var(--ink2);
-  line-height: 1.6;
-}
-
-/* SKILLS — minimal inline list */
-.skills-grid {
+.exp-item {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
+  grid-template-columns: 180px 1fr;
+  gap: 40px;
+  padding: 36px 0;
+  border-bottom: 1px solid var(--rule);
 }
+.exp-item:first-child { padding-top: 0; }
+.exp-item:last-child { border-bottom: none; }
 
-.skill-row {
-  display: contents;
-}
+.exp-left {}
 
-.skill-category {
-  font-family: 'IBM Plex Mono', monospace;
+.exp-period {
+  font-family: 'JetBrains Mono', monospace;
   font-size: 10px;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.exp-co {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 3px;
+}
+
+.exp-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.exp-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.exp-body {
+  font-size: 13px;
+  color: #7a7870;
+  line-height: 1.8;
+}
+
+.exp-note {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  color: var(--accent);
+  margin-top: 10px;
+  opacity: 0.85;
+}
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-top: 48px;
+}
+
+.stat-block {
+  background: var(--card);
+  padding: 24px 20px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Lora', serif;
+  font-size: 36px;
+  font-weight: 600;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--muted);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--rule);
-  padding-right: 20px;
 }
 
-.skill-items {
-  font-size: 13px;
-  color: var(--ink2);
-  padding: 14px 0;
-  border-bottom: 1px solid var(--rule);
-  line-height: 1.6;
+/* ── CONTACT ── */
+.contact-section {
+  padding: 72px 56px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
 }
 
-/* CONTACT — understated */
-.contact-block {
-  padding: 40px 0 0;
-  border-top: 1px solid var(--rule);
+.contact-hed {
+  font-family: 'Lora', serif;
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: -0.5px;
+  line-height: 1.2;
+  margin-bottom: 16px;
+}
+
+.contact-hed em {
+  font-style: italic;
+  color: var(--muted);
 }
 
 .contact-body {
-  font-size: 15px;
-  color: var(--ink2);
-  line-height: 1.8;
-  margin-bottom: 24px;
-  max-width: 520px;
+  font-size: 13px;
+  color: #7a7870;
+  line-height: 1.85;
 }
 
-.contact-links {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
 }
 
-.contact-link {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 12px;
-  letter-spacing: 0.05em;
-  color: var(--accent);
+.clink {
+  background: var(--card);
+  padding: 20px 18px;
   text-decoration: none;
-  border-bottom: 1px solid rgba(26, 74, 107, 0.25);
-  padding-bottom: 2px;
-  transition: border-color 0.15s;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: background 0.2s;
+}
+.clink:hover { background: var(--bg3); }
+
+.clink-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
 }
 
-.contact-link:hover {
-  border-color: var(--accent);
+.clink-val {
+  font-size: 12px;
+  color: var(--accent);
 }
 
-/* FOOTER */
+/* ── FOOTER ── */
 footer {
-  margin-top: 64px;
-  padding: 24px 0 40px;
+  padding: 20px 56px;
   border-top: 1px solid var(--rule);
   display: flex;
   justify-content: space-between;
-  align-items: center;
-}
-
-.footer-copy {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
   color: var(--muted);
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
 }
 
-.footer-location {
-  font-family: 'IBM Plex Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-}
-
-/* ANIMATIONS */
+/* ── ANIMATIONS ── */
 @keyframes up {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .reveal {
   opacity: 0;
-  transform: translateY(10px);
-  transition: opacity 0.45s ease, transform 0.45s ease;
+  transform: translateY(14px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
+.reveal.visible { opacity: 1; transform: translateY(0); }
 
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVE */
-@media (max-width: 600px) {
-  body { padding: 0 20px; }
-  .topbar { flex-direction: column; align-items: flex-start; gap: 16px; }
-  .bg-grid { grid-template-columns: 1fr; }
-  .bg-row-period { padding: 16px 0 4px; border-bottom: none; font-size: 10px; }
-  .bg-row-content { padding-top: 0; }
-  .built-item { grid-template-columns: 1fr; }
-  .built-stack { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .skill-category { border-bottom: none; padding-bottom: 4px; padding-top: 14px; }
-  .skill-items { padding-top: 0; }
-  footer { flex-direction: column; align-items: flex-start; gap: 6px; }
+/* ── RESPONSIVE ── */
+@media (max-width: 860px) {
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; min-height: auto; }
+  .hero-left { padding: 80px 24px 40px; border-right: none; border-bottom: 1px solid var(--rule); }
+  .hero-right { padding: 40px 24px; }
+  .section { padding: 56px 24px; }
+  .cards { grid-template-columns: 1fr; }
+  .work-item { grid-template-columns: 1fr; gap: 8px; }
+  .work-year { padding-top: 0; }
+  .work-tags { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
+  .exp-item { grid-template-columns: 1fr; gap: 10px; }
+  .stats-row { grid-template-columns: repeat(2,1fr); }
+  .contact-section { grid-template-columns: 1fr; gap: 36px; padding: 56px 24px; }
+  .contact-grid { grid-template-columns: 1fr 1fr; }
+  footer { padding: 16px 24px; flex-direction: column; gap: 4px; }
 }
 </style>
 </head>
 <body>
 
-<!-- TOP BAR -->
-<header class="topbar">
-  <span class="topbar-name">Asaf Mohammed</span>
-  <ul class="topbar-nav">
-    <li><a href="#built">Built</a></li>
-    <li><a href="#background">Background</a></li>
-    <li><a href="#thinking">Thinking</a></li>
+<!-- NAV -->
+<nav id="nav">
+  <span class="nav-logo">asaf mohammed</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-</header>
+</nav>
 
-<!-- INTRO -->
-<section class="intro">
-  <div class="intro-role">GTM Engineer · Data · Automation</div>
-  <h1 class="intro-headline">
-    I work at the intersection of<br>
-    data, automation, <em>and revenue.</em>
-  </h1>
-  <div class="intro-body">
-    <p>
-      Five years building data and automation systems inside SaaS companies — most recently at ZoomInfo, where I built internal tooling for the Sales and Customer Success teams that run on GTM intelligence for a living.
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">GTM Engineer · Data · Automation · AI</div>
+    <h1 class="hero-name">Asaf Mohammed</h1>
+    <p class="hero-sub">Revenue infrastructure, <br>built from the inside out.</p>
+    <p class="hero-body">
+      Five years building data and automation systems inside SaaS companies. Most recently at <strong>ZoomInfo</strong> — where I built AI tools and enrichment pipelines for the Sales and CS teams that run on GTM intelligence for a living.<br><br>
+      I also ship independently. <strong>PingHook</strong> is a webhook notification microservice I built and run as a product.
     </p>
-    <p>
-      My work sits in the layer most people don't think about: the pipelines, integrations, and workflows that turn raw data into things sales reps can actually act on. I'm also building <a href="https://pinghook.dev" target="_blank">PingHook</a> — a webhook notification microservice I shipped independently.
-    </p>
+    <div class="hero-links">
+      <a href="https://pinghook.dev" target="_blank" class="hlink">pinghook.dev</a>
+      <a href="https://linkedin.com" target="_blank" class="hlink">LinkedIn</a>
+      <a href="https://github.com" target="_blank" class="hlink">GitHub</a>
+      <a href="mailto:asafmohammed21@gmail.com" class="hlink">Email</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="venn-wrap">
+      <div class="venn-title">Where GTM Engineering lives — and where I fit</div>
+      <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
+        <defs>
+          <style>
+            .vt { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #6a6860; letter-spacing: 0.14em; }
+            .vl { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; }
+            .vc { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; }
+            .vs { font-family: 'Sora', sans-serif; font-size: 10.5px; fill: #6a6860; }
+            .vm { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; }
+          </style>
+        </defs>
+        <text x="170" y="22" text-anchor="middle" class="vt">WHAT GTM ENGINEERING DEMANDS</text>
+        <text x="510" y="22" text-anchor="middle" class="vt">WHAT I BRING</text>
+        <line x1="340" y1="14" x2="340" y2="410" stroke="#2a2a26" stroke-width="1"/>
+        <circle cx="118" cy="158" r="95" fill="#d4a843" fill-opacity="0.05"/>
+        <circle cx="223" cy="158" r="95" fill="#6b8fd4" fill-opacity="0.05"/>
+        <circle cx="170" cy="248" r="95" fill="#4a9b7a" fill-opacity="0.05"/>
+        <circle cx="118" cy="158" r="95" fill="none" stroke="#d4a843" stroke-width="1.2" stroke-opacity="0.6"/>
+        <circle cx="223" cy="158" r="95" fill="none" stroke="#6b8fd4" stroke-width="1.2" stroke-opacity="0.6"/>
+        <circle cx="170" cy="248" r="95" fill="none" stroke="#4a9b7a" stroke-width="1.2" stroke-opacity="0.6"/>
+        <text x="62"  y="106" text-anchor="middle" class="vl" fill="#d4a843">Data</text>
+        <text x="278" y="106" text-anchor="middle" class="vl" fill="#6b8fd4">AI</text>
+        <text x="170" y="370" text-anchor="middle" class="vl" fill="#4a9b7a">Automation</text>
+        <text x="170" y="192" text-anchor="middle" class="vc" fill="#eceae4">GTM Engg</text>
+        <circle cx="458" cy="158" r="95" fill="#d4a843" fill-opacity="0.05"/>
+        <circle cx="563" cy="158" r="95" fill="#6b8fd4" fill-opacity="0.05"/>
+        <circle cx="510" cy="248" r="95" fill="#4a9b7a" fill-opacity="0.05"/>
+        <circle cx="458" cy="158" r="95" fill="none" stroke="#d4a843" stroke-width="1.2" stroke-opacity="0.6"/>
+        <circle cx="563" cy="158" r="95" fill="none" stroke="#6b8fd4" stroke-width="1.2" stroke-opacity="0.6"/>
+        <circle cx="510" cy="248" r="95" fill="none" stroke="#4a9b7a" stroke-width="1.2" stroke-opacity="0.6"/>
+        <text x="393" y="96"  text-anchor="middle" class="vm" fill="#d4a843">ZoomInfo</text>
+        <text x="393" y="111" text-anchor="middle" class="vs">Snowflake · SQL</text>
+        <text x="393" y="124" text-anchor="middle" class="vs">Tableau · Power BI</text>
+        <text x="628" y="96"  text-anchor="middle" class="vm" fill="#6b8fd4">Gemini · LLMs</text>
+        <text x="628" y="111" text-anchor="middle" class="vs">Prompt Engineering</text>
+        <text x="628" y="124" text-anchor="middle" class="vs">RAG · AI Agents</text>
+        <text x="510" y="360" text-anchor="middle" class="vm" fill="#4a9b7a">n8n · Zapier</text>
+        <text x="510" y="374" text-anchor="middle" class="vs">Webhooks · FastAPI</text>
+        <text x="510" y="388" text-anchor="middle" class="vs">HubSpot · Salesforce · PingHook</text>
+        <text x="510" y="192" text-anchor="middle" class="vc" fill="#eceae4">Asaf</text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<section class="section" id="skills">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">01</span>
+    <h2 class="section-title">What I work with</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="cards reveal">
+    <div class="card">
+      <div class="card-icon" style="background:rgba(212,168,67,0.1);">⚡</div>
+      <div class="card-title">Signal & Webhook Infrastructure</div>
+      <p class="card-body">Real-time event pipelines that capture GTM signals — form fills, CRM triggers, product events — and route them instantly without manual intervention.</p>
+      <div class="card-tools">
+        <span class="tag">Webhooks</span><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">n8n</span><span class="tag">PingHook</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(107,143,212,0.1);">🤖</div>
+      <div class="card-title">AI-Powered Lead Intelligence</div>
+      <p class="card-body">LLM-driven enrichment and qualification — automatic lead tiering, company normalisation, personalised outreach hooks generated at scale without manual research.</p>
+      <div class="card-tools">
+        <span class="tag">Gemini</span><span class="tag">Prompt Engineering</span><span class="tag">RAG</span><span class="tag">AI Agents</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,155,122,0.1);">🔄</div>
+      <div class="card-title">Workflow Automation</div>
+      <p class="card-body">Multi-step automation connecting the GTM stack end-to-end — from inbound signal to enriched, routed, and notified rep — without duct tape between tools.</p>
+      <div class="card-tools">
+        <span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">Python</span><span class="tag">JavaScript</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(212,168,67,0.1);">🏗️</div>
+      <div class="card-title">CRM Architecture</div>
+      <p class="card-body">Data models, lifecycle stages, and routing logic that keep CRM clean, pipeline accurate, and reps focused on the right leads at the right time.</p>
+      <div class="card-tools">
+        <span class="tag">HubSpot</span><span class="tag">Salesforce</span><span class="tag">ZoomInfo SalesOS</span><span class="tag">Airtable</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(107,143,212,0.1);">📊</div>
+      <div class="card-title">Revenue Analytics</div>
+      <p class="card-body">Turning CRM, product, and campaign data into decisions — pipeline velocity, conversion tracking, customer segmentation, and churn signals from Snowflake to Tableau.</p>
+      <div class="card-tools">
+        <span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">PySpark</span>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:rgba(74,155,122,0.1);">🚀</div>
+      <div class="card-title">Product Engineering</div>
+      <p class="card-body">Building and shipping GTM tooling end-to-end — schema design, API build, security, testing, deployment. Not just configuring existing tools but creating new ones.</p>
+      <div class="card-tools">
+        <span class="tag">FastAPI</span><span class="tag">Supabase</span><span class="tag">Python</span><span class="tag">Git</span><span class="tag">Streamlit</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-row reveal">
+    <div class="stat-block">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years in GTM data</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">85%</div>
+      <div class="stat-label">Sales research time saved</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">Data enrichments</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-num">56</div>
+      <div class="stat-label">Test suite — PingHook</div>
+    </div>
   </div>
 </section>
 
-<!-- BUILT -->
-<section class="section" id="built">
-  <div class="section-label reveal">Things I've built</div>
-  <div class="built-list">
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">02</span>
+    <h2 class="section-title">Things I've built</h2>
+    <div class="section-rule"></div>
+  </div>
+  <div class="work-list">
 
-    <div class="built-item reveal">
+    <div class="work-item reveal">
+      <div class="work-year">2026<br><span style="color:#4a9b7a;font-size:9px;">Personal</span></div>
       <div>
-        <div class="built-name">AI Lead Triage & Personalization Engine</div>
-        <p class="built-desc">
-          An end-to-end inbound pipeline in n8n — webhook ingests form submissions, runs parallel branches for AI enrichment and company normalization, classifies leads into Enterprise / Mid-Market / SMB tiers using Gemini, generates personalised outreach hooks per lead, and delivers a real-time Telegram notification via PingHook on every submission.
-        </p>
-        <div class="built-outcome">
-          <span>↓ 85% reduction</span> in sales research time per lead
-        </div>
+        <div class="work-name">AI Lead Triage & Personalization Engine</div>
+        <p class="work-desc">End-to-end inbound pipeline — webhook ingestion, parallel AI enrichment, Enterprise/Mid-Market/SMB tiering via Gemini, company normalisation, and real-time Telegram alerts via PingHook on every submission.</p>
+        <div class="work-result">↓ 85% reduction in sales research time per lead</div>
       </div>
-      <div class="built-stack">
-        <span class="stack-item">n8n</span>
-        <span class="stack-item">Gemini LLM</span>
-        <span class="stack-item">Airtable</span>
-        <span class="stack-item">Webhooks</span>
-        <span class="stack-item">JavaScript</span>
+      <div class="work-tags">
+        <span class="tag">n8n</span>
+        <span class="tag">Gemini LLM</span>
+        <span class="tag">Airtable</span>
+        <span class="tag">PingHook</span>
       </div>
     </div>
 
-    <div class="built-item reveal">
+    <div class="work-item reveal">
+      <div class="work-year">2025-26<br><span style="color:#4a9b7a;font-size:9px;">Live SaaS</span></div>
       <div>
-        <div class="built-name">PingHook — Webhook Notification Microservice</div>
-        <p class="built-desc">
-          A production-ready service that delivers real-time event signals from CRMs, automation platforms, and CI/CD pipelines to Telegram. Label-based routing, per-user rate limiting, payload validation, and a 56-test suite. Shipped as zero-config SaaS — no signup, no dashboard. I own the full product lifecycle: schema, API, security, QA, and deployment.
-        </p>
-        <div class="built-outcome">
-          Live at <span><a href="https://pinghook.dev" target="_blank" style="color:var(--accent);text-decoration:none;">pinghook.dev</a></span>
-        </div>
+        <div class="work-name">PingHook — Webhook Notification Microservice</div>
+        <p class="work-desc">Production-ready service delivering real-time GTM event signals from CRMs and automation platforms to Telegram. Label-based routing, rate limiting, payload validation, 56-test suite. Zero-config — no signup, no dashboard. Full product lifecycle ownership.</p>
+        <div class="work-result">→ Live at pinghook.dev</div>
       </div>
-      <div class="built-stack">
-        <span class="stack-item">FastAPI</span>
-        <span class="stack-item">Python</span>
-        <span class="stack-item">Supabase</span>
-        <span class="stack-item">Telegram Bot API</span>
+      <div class="work-tags">
+        <span class="tag">FastAPI</span>
+        <span class="tag">Python</span>
+        <span class="tag">Supabase</span>
       </div>
     </div>
 
-    <div class="built-item reveal">
+    <div class="work-item reveal">
+      <div class="work-year">2023–25<br><span style="color:#d4a843;font-size:9px;">ZoomInfo</span></div>
       <div>
-        <div class="built-name">AI Data Assistant for Account Managers <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;"> — ZoomInfo</span></div>
-        <p class="built-desc">
-          An internal tool that let Account Managers query live customer data in natural language instead of filing analyst requests. I designed the schema, engineered prompts that reliably translated questions into accurate Snowflake SQL, and migrated the interface from Streamlit into a Slack bot — so users never had to leave where they already worked. Adopted across the team without a single training session.
-        </p>
-        <div class="built-outcome">
-          <span>↓ Hours to seconds</span> · Zero onboarding · Team-wide adoption
-        </div>
+        <div class="work-name">AI Data Assistant for Account Managers</div>
+        <p class="work-desc">Natural language → Snowflake SQL. Account Managers query live customer data without filing analyst requests. Designed schema, engineered prompts, migrated from Streamlit to Slack bot for zero-friction adoption. Adopted team-wide without a single training session.</p>
+        <div class="work-result">↓ Hours to seconds · Zero onboarding · Team-wide adoption</div>
       </div>
-      <div class="built-stack">
-        <span class="stack-item">Snowflake</span>
-        <span class="stack-item">LLM Prompting</span>
-        <span class="stack-item">SQL Generation</span>
-        <span class="stack-item">Slack Bot API</span>
+      <div class="work-tags">
+        <span class="tag">Snowflake</span>
+        <span class="tag">LLM Prompting</span>
+        <span class="tag">Slack Bot</span>
       </div>
     </div>
 
-    <div class="built-item reveal">
+    <div class="work-item reveal">
+      <div class="work-year">2023–25<br><span style="color:#d4a843;font-size:9px;">ZoomInfo</span></div>
       <div>
-        <div class="built-name">Revenue Credit Audit Dashboard <span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--muted);font-weight:400;"> — ZoomInfo</span></div>
-        <p class="built-desc">
-          A Tableau dashboard tracking free credits issued across the customer base, segmented by sales stage and customer tier — SMB, Mid-Market, Enterprise, Strategic. Time-series analysis surfaced cost patterns that informed retention and expansion decisions for the Revenue Operations team.
-        </p>
-        <div class="built-outcome">
-          Used by <span>Revenue Operations</span> for churn and expansion decisions
-        </div>
+        <div class="work-name">Revenue Credit Audit Dashboard</div>
+        <p class="work-desc">Tableau dashboard tracking free credits across the customer base — segmented by sales stage, customer tier (SMB → Strategic), and credit reason. Time-series analysis surfacing cost patterns for Revenue Operations retention and expansion decisions.</p>
+        <div class="work-result">→ Directly informed churn and expansion strategy</div>
       </div>
-      <div class="built-stack">
-        <span class="stack-item">Tableau</span>
-        <span class="stack-item">Snowflake SQL</span>
-        <span class="stack-item">Customer Segmentation</span>
+      <div class="work-tags">
+        <span class="tag">Tableau</span>
+        <span class="tag">Snowflake SQL</span>
       </div>
     </div>
 
   </div>
 </section>
 
-<!-- BACKGROUND -->
-<section class="section" id="background">
-  <div class="section-label reveal">Background</div>
-  <div class="bg-grid reveal">
-
-    <div class="bg-row">
-      <div class="bg-row-period">2026 – now</div>
-      <div class="bg-row-content">
-        <div class="bg-company">Lloyds List Intelligence</div>
-        <div class="bg-role">Data Services Analyst</div>
-        <div class="bg-desc">Structured data delivery for clients per SLA. REST API troubleshooting and data sync debugging via Postman across integrated systems.</div>
-      </div>
-    </div>
-
-    <div class="bg-row">
-      <div class="bg-row-period">2023 – 2025</div>
-      <div class="bg-row-content">
-        <div class="bg-company">ZoomInfo</div>
-        <div class="bg-role">Data Analyst, GTM Intelligence Platform</div>
-        <div class="bg-desc">
-          Optimised Snowflake SQL powering GTM workflows for Sales and Customer Success. Built revenue analytics dashboards. Automated reporting pipelines with Python and PySpark. Delivered 100+ data enrichments supporting lead qualification and pipeline workflows. Cross-functional partner to Sales, CS, and Product.
-        </div>
-        <div class="bg-note">→ Built internal AI tooling used across the Account Management team</div>
-      </div>
-    </div>
-
-    <div class="bg-row">
-      <div class="bg-row-period">2020 – 2023</div>
-      <div class="bg-row-content">
-        <div class="bg-company">Altrata</div>
-        <div class="bg-role">Senior Research Analyst</div>
-        <div class="bg-desc">Market and business intelligence reports for Sales and Client Success. SQL analysis and recurring reporting. Data migration with exposure to warehousing and governance. Mentored junior analysts.</div>
-      </div>
-    </div>
-
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-header reveal">
+    <span class="section-eyebrow">03</span>
+    <h2 class="section-title">Background</h2>
+    <div class="section-rule"></div>
   </div>
-</section>
+  <div class="exp-list">
 
-<!-- THINKING / UNFAIR ADVANTAGE — written as prose, no comparison table -->
-<section class="section" id="thinking">
-  <div class="section-label reveal">How I think about this work</div>
-  <div class="thinking-body reveal">
-    <p>
-      Most people who work in GTM either understand the strategy or can configure the tools. The gap — understanding the data infrastructure underneath, and being able to build against it — is where I spend most of my time.
-    </p>
-
-    <div class="thinking-pull">
-      "I know what ZoomInfo does under the hood. I built systems on top of the same data infrastructure that their Sales teams depend on."
-    </div>
-
-    <p>
-      Two years at ZoomInfo meant working directly with the data that powers enterprise GTM motions — enrichment pipelines, account intelligence, lead qualification workflows. I wasn't using the product as a customer. I was building internal tooling on top of it, for the people who ran revenue at one of the GTM industry's most recognised platforms.
-    </p>
-
-    <p>
-      That changes how I read a GTM stack. When I look at a company's enrichment setup or CRM routing logic, I understand not just the tooling, but the data quality and signal logic underneath it — where the gaps tend to form, and why they're hard to fix without going a layer deeper.
-    </p>
-
-    <p>
-      <strong>On AI in GTM:</strong> I've used LLMs in production for lead qualification and enrichment — not as wrappers around existing tools, but as reasoning layers that handle classification, normalisation, and personalisation at scale. The lead triage engine I built reduced manual research time by 85%. The AI data assistant I built at ZoomInfo replaced analyst requests with natural language queries, without training anyone. Both shipped. Both got used.
-    </p>
-
-    <p>
-      I also build products independently. PingHook started as infrastructure I needed for my own GTM workflows and became a standalone microservice. Owning the full lifecycle — schema design, API build, security hardening, testing, deployment — changes how you think about building internal systems too.
-    </p>
-  </div>
-
-  <!-- SKILLS — inline, not a sales grid -->
-  <div style="margin-top: 40px;" class="reveal">
-    <div class="section-label">Tools & technologies</div>
-    <div class="skills-grid">
-      <div class="skill-row">
-        <div class="skill-category">Automation</div>
-        <div class="skill-items">n8n, Zapier, REST APIs, Webhooks, Python</div>
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">2026 – Present</div>
+        <div class="exp-co">Lloyds List Intelligence</div>
+        <div class="exp-role">Data Services Analyst</div>
       </div>
-      <div class="skill-row">
-        <div class="skill-category">CRM & GTM</div>
-        <div class="skill-items">HubSpot, Salesforce, ZoomInfo SalesOS, Airtable</div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-category">Data</div>
-        <div class="skill-items">Snowflake, SQL, Python, PySpark, Tableau</div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-category">AI & LLMs</div>
-        <div class="skill-items">Gemini, Prompt Engineering, RAG, AI Agents</div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-category">Engineering</div>
-        <div class="skill-items">FastAPI, Supabase, Streamlit, Git, Python</div>
-      </div>
-      <div class="skill-row">
-        <div class="skill-category">Certifications</div>
-        <div class="skill-items">Claude Code in Action (Anthropic), SQL (HackerRank)</div>
+      <div>
+        <div class="exp-title">Data operations & API integration support</div>
+        <p class="exp-body">Structured data delivery per client specifications and SLA. REST API troubleshooting and data sync debugging via Postman across integrated systems.</p>
       </div>
     </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">2023 – 2025</div>
+        <div class="exp-co">ZoomInfo</div>
+        <div class="exp-role">Data Analyst<br>GTM Intelligence Platform</div>
+      </div>
+      <div>
+        <div class="exp-title">AI tooling, enrichment pipelines, and revenue analytics inside a GTM data platform</div>
+        <p class="exp-body">Optimised Snowflake SQL powering GTM workflows for Sales and Customer Success. Built revenue analytics dashboards. Automated reporting with Python and PySpark — 20% reduction in manual effort. Delivered 100+ data enrichments for lead qualification and pipeline acceleration. Cross-functional with Sales, CS, and Product.</p>
+        <div class="exp-note">→ Built AI-powered internal tooling adopted across the Account Management team</div>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-left">
+        <div class="exp-period">2020 – 2023</div>
+        <div class="exp-co">Altrata</div>
+        <div class="exp-role">Senior Research Analyst</div>
+      </div>
+      <div>
+        <div class="exp-title">Market intelligence, SQL analysis, team mentorship</div>
+        <p class="exp-body">Market and business intelligence reports with Sales and Client Success. SQL analysis and recurring reporting. Data migration with warehousing and governance exposure. Mentored junior analysts, established reporting best practices.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- CONTACT -->
-<section class="contact-block" id="contact">
-  <div class="section-label reveal">Contact</div>
-  <p class="contact-body reveal">
-    I'm based in Chennai. If something here is relevant to what you're working on, feel free to reach out.
-  </p>
-  <div class="contact-links reveal">
-    <a href="mailto:asafmohammed21@gmail.com" class="contact-link">asafmohammed21@gmail.com</a>
-    <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="contact-link">LinkedIn</a>
-    <a href="https://github.com/asafmd" target="_blank" class="contact-link">GitHub</a>
-    <a href="https://pinghook.dev" target="_blank" class="contact-link">PingHook</a>
+<section class="contact-section" id="contact">
+  <div class="reveal">
+    <h2 class="contact-hed">Get in touch.<br><em>No agenda needed.</em></h2>
+    <p class="contact-body" style="margin-top:16px;">
+      Based in Chennai, India. If something here is relevant to what you're working on, feel free to reach out directly.
+    </p>
+  </div>
+  <div class="contact-grid reveal">
+    <a href="mailto:asafmohammed21@gmail.com" class="clink">
+      <span class="clink-label">Email</span>
+      <span class="clink-val">asafmohammed21@gmail.com</span>
+    </a>
+    <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="clink">
+      <span class="clink-label">LinkedIn</span>
+      <span class="clink-val">Connect →</span>
+    </a>
+    <a href="https://pinghook.dev" target="_blank" class="clink">
+      <span class="clink-label">Live Product</span>
+      <span class="clink-val">pinghook.dev →</span>
+    </a>
+    <a href="https://github.com/asafmd" target="_blank" class="clink">
+      <span class="clink-label">GitHub</span>
+      <span class="clink-val">View code →</span>
+    </a>
   </div>
 </section>
 
 <footer>
-  <span class="footer-copy">Asaf Mohammed · 2026</span>
-  <span class="footer-location">Chennai, India</span>
+  <span>Asaf Mohammed · Chennai, India</span>
+  <span>GTM Engineer · Ex-ZoomInfo · 2026</span>
 </footer>
 
 <script>
+  // Nav scroll
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 30);
+  });
+
+  // Reveal
   const reveals = document.querySelectorAll('.reveal');
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
       }
     });
-  }, { threshold: 0.08 });
-  reveals.forEach(el => observer.observe(el));
+  }, { threshold: 0.07 });
+  reveals.forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
