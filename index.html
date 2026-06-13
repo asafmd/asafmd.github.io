@@ -1,863 +1,816 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asaf Mohammed</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Lora:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #0e0e0c;
-  --bg2: #161614;
-  --bg3: #1e1e1b;
-  --ink: #eceae4;
-  --ink2: #b0ad a4;
-  --muted: #6a6860;
-  --accent: #d4a843;
-  --accent2: #4a9b7a;
-  --accent3: #6b8fd4;
-  --rule: #2a2a26;
-  --card: #1a1a17;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Asaf Mohammed — GTM Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
+    :root {
+      --bg: #07090F;
+      --bg-2: #0D1220;
+      --bg-3: #131929;
+      --text: #D8E8F5;
+      --text-muted: #6B8099;
+      --text-dim: #3D5068;
+      --accent: #4A9EFF;
+      --accent-teal: #64FFDA;
+      --accent-teal-dim: rgba(100,255,218,0.08);
+      --accent-blue-dim: rgba(74,158,255,0.08);
+      --border: rgba(74,158,255,0.12);
+      --border-teal: rgba(100,255,218,0.15);
+    }
 
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: 'Sora', sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
-  overflow-x: hidden;
-}
+    html { scroll-behavior: smooth; }
 
-/* ── NAV ── */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 56px;
-  transition: background 0.3s, border-color 0.3s;
-  border-bottom: 1px solid transparent;
-}
-nav.scrolled {
-  background: rgba(14,14,12,0.92);
-  backdrop-filter: blur(12px);
-  border-bottom-color: var(--rule);
-}
-.nav-logo {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-}
-.nav-links {
-  display: flex; gap: 32px; list-style: none;
-}
-.nav-links a {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--accent); }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ── HERO ── */
-.hero {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0;
-  padding-top: 80px;
-  border-bottom: 1px solid var(--rule);
-}
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(7,9,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
-.hero-left {
-  padding: 72px 56px 72px 56px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  border-right: 1px solid var(--rule);
-}
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 13px;
+      color: var(--accent-teal);
+      letter-spacing: 0.05em;
+      text-decoration: none;
+    }
 
-.hero-right {
-  padding: 72px 56px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  background: var(--bg2);
-}
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
 
-.hero-tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 24px;
-  animation: up 0.5s ease both;
-}
+    .nav-links a {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-.hero-name {
-  font-family: 'Lora', Georgia, serif;
-  font-size: clamp(42px, 5.5vw, 68px);
-  font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -1px;
-  color: var(--ink);
-  margin-bottom: 12px;
-  animation: up 0.5s 0.08s ease both;
-}
+    .nav-links a:hover { color: var(--accent-teal); }
 
-.hero-sub {
-  font-family: 'Lora', serif;
-  font-style: italic;
-  font-size: clamp(16px, 2vw, 20px);
-  color: var(--muted);
-  margin-bottom: 32px;
-  animation: up 0.5s 0.14s ease both;
-  font-weight: 400;
-}
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 48px 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
 
-.hero-body {
-  font-size: 14px;
-  color: #8a8880;
-  line-height: 1.85;
-  max-width: 400px;
-  animation: up 0.5s 0.2s ease both;
-}
+    .hero-eyebrow {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-teal);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.hero-body strong { color: var(--ink); font-weight: 500; }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent-teal);
+    }
 
-.hero-links {
-  display: flex;
-  gap: 16px;
-  margin-top: 36px;
-  animation: up 0.5s 0.26s ease both;
-  flex-wrap: wrap;
-}
+    .hero h1 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      color: #EEF5FF;
+      margin-bottom: 12px;
+    }
 
-.hlink {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-  text-decoration: none;
-  border-bottom: 1px solid rgba(212,168,67,0.25);
-  padding-bottom: 2px;
-  transition: border-color 0.2s;
-}
-.hlink:hover { border-color: var(--accent); }
+    .hero h1 span {
+      color: var(--accent);
+    }
 
-/* ── VENN DIAGRAM ── */
-.venn-wrap {
-  width: 100%;
-  max-width: 460px;
-  animation: up 0.5s 0.2s ease both;
-}
+    .hero-sub {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(16px, 2.5vw, 22px);
+      font-weight: 300;
+      color: var(--text-muted);
+      margin-bottom: 36px;
+      max-width: 620px;
+      line-height: 1.5;
+    }
 
-.venn-title {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-align: center;
-  margin-bottom: 20px;
-}
+    .hero-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
 
-.venn-svg-wrap {
-  position: relative;
-  width: 100%;
-}
+    .hero-desc strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
-/* ── SECTIONS ── */
-.section {
-  padding: 80px 56px;
-  border-bottom: 1px solid var(--rule);
-}
-.section:nth-child(even) { background: var(--bg2); }
+    .hero-links {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
 
-.section-header {
-  display: flex;
-  align-items: baseline;
-  gap: 16px;
-  margin-bottom: 48px;
-}
+    .link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border-radius: 4px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: all 0.2s;
+    }
 
-.section-eyebrow {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--accent);
-}
+    .link-pill-primary {
+      background: var(--accent-teal-dim);
+      border: 1px solid var(--border-teal);
+      color: var(--accent-teal);
+    }
 
-.section-title {
-  font-family: 'Lora', serif;
-  font-size: clamp(24px, 3vw, 36px);
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.5px;
-  line-height: 1.15;
-}
+    .link-pill-primary:hover {
+      background: rgba(100,255,218,0.14);
+    }
 
-.section-rule {
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
-}
+    .link-pill-secondary {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+    }
 
-/* ── CARDS ── */
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
+    .link-pill-secondary:hover {
+      border-color: rgba(74,158,255,0.3);
+      color: var(--accent);
+    }
 
-.card {
-  background: var(--card);
-  padding: 28px 24px;
-  transition: background 0.2s;
-}
-.card:hover { background: var(--bg3); }
+    /* SECTION */
+    section {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 96px 48px;
+      border-top: 1px solid var(--border);
+    }
 
-.card-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 6px;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-}
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-teal);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 48px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
 
-.card-title {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
+    .section-label::after {
+      content: '';
+      display: block;
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
 
-.card-body {
-  font-size: 12px;
-  color: var(--muted);
-  line-height: 1.75;
-}
+    /* VENN */
+    .venn-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 56px;
+    }
 
-.card-tools {
-  margin-top: 12px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px;
-}
+    .venn-svg-wrap {
+      width: 100%;
+      max-width: 520px;
+    }
 
-.tag {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  background: var(--bg3);
-  border: 1px solid var(--rule);
-  padding: 2px 7px;
-}
+    .venn-svg-wrap svg {
+      width: 100%;
+      height: auto;
+      overflow: visible;
+    }
 
-/* ── WORK LIST ── */
-.work-list {
-  display: flex;
-  flex-direction: column;
-}
+    .venn-tags {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      width: 100%;
+    }
 
-.work-item {
-  display: grid;
-  grid-template-columns: 100px 1fr auto;
-  gap: 32px;
-  align-items: start;
-  padding: 32px 0;
-  border-bottom: 1px solid var(--rule);
-  transition: padding-left 0.2s;
-}
-.work-item:first-child { padding-top: 0; }
-.work-item:last-child { border-bottom: none; }
-.work-item:hover { padding-left: 6px; }
+    .venn-tag-group {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px;
+    }
 
-.work-year {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 11px;
-  color: var(--muted);
-  padding-top: 3px;
-}
+    .venn-tag-group h4 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
 
-.work-name {
-  font-family: 'Lora', serif;
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 6px;
-  line-height: 1.3;
-}
+    .venn-tag-group.data h4 { color: var(--accent); }
+    .venn-tag-group.gtm h4 { color: var(--accent-teal); }
+    .venn-tag-group.ai h4 { color: #A078FF; }
 
-.work-desc {
-  font-size: 13px;
-  color: #7a7870;
-  line-height: 1.75;
-  margin-bottom: 10px;
-}
+    .tag-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
 
-.work-result {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--accent2);
-  letter-spacing: 0.03em;
-}
+    .tag-item {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.02em;
+    }
 
-.work-tags {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4px;
-  padding-top: 3px;
-  flex-shrink: 0;
-}
+    /* WORK CARDS */
+    .work-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
 
-/* ── EXPERIENCE ── */
-.exp-list {
-  display: flex;
-  flex-direction: column;
-}
+    .work-card {
+      background: var(--bg-2);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 32px;
+      transition: border-color 0.2s, background 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
 
-.exp-item {
-  display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 40px;
-  padding: 36px 0;
-  border-bottom: 1px solid var(--rule);
-}
-.exp-item:first-child { padding-top: 0; }
-.exp-item:last-child { border-bottom: none; }
+    .work-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-teal));
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
 
-.exp-left {}
+    .work-card:hover {
+      border-color: rgba(74,158,255,0.25);
+      background: var(--bg-3);
+    }
 
-.exp-period {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--accent);
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
+    .work-card:hover::before { opacity: 1; }
 
-.exp-co {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 3px;
-}
+    .work-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
 
-.exp-role {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.04em;
-  line-height: 1.5;
-}
+    .work-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
 
-.exp-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-bottom: 8px;
-}
+    .work-badge {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 3px 10px;
+      border-radius: 3px;
+      letter-spacing: 0.04em;
+    }
 
-.exp-body {
-  font-size: 13px;
-  color: #7a7870;
-  line-height: 1.8;
-}
+    .badge-live {
+      background: var(--accent-teal-dim);
+      border: 1px solid var(--border-teal);
+      color: var(--accent-teal);
+    }
 
-.exp-note {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--accent);
-  margin-top: 10px;
-  opacity: 0.85;
-}
+    .badge-internal {
+      background: var(--accent-blue-dim);
+      border: 1px solid var(--border);
+      color: var(--accent);
+    }
 
-/* ── STATS ROW ── */
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  margin-top: 48px;
-}
+    .badge-personal {
+      background: rgba(160,120,255,0.08);
+      border: 1px solid rgba(160,120,255,0.15);
+      color: #A078FF;
+    }
 
-.stat-block {
-  background: var(--card);
-  padding: 24px 20px;
-  text-align: center;
-}
+    .work-card h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #EEF5FF;
+      margin-bottom: 10px;
+      line-height: 1.3;
+    }
 
-.stat-num {
-  font-family: 'Lora', serif;
-  font-size: 36px;
-  font-weight: 600;
-  color: var(--accent);
-  line-height: 1;
-  margin-bottom: 6px;
-}
+    .work-card p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
 
-.stat-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+    .work-outcome {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-teal);
+      letter-spacing: 0.03em;
+      margin-bottom: 20px;
+      padding: 10px 14px;
+      background: var(--accent-teal-dim);
+      border-left: 2px solid var(--accent-teal);
+      border-radius: 0 4px 4px 0;
+    }
 
-/* ── CONTACT ── */
-.contact-section {
-  padding: 72px 56px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 64px;
-  align-items: start;
-}
+    .work-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
 
-.contact-hed {
-  font-family: 'Lora', serif;
-  font-size: clamp(28px, 3.5vw, 44px);
-  font-weight: 600;
-  color: var(--ink);
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-  margin-bottom: 16px;
-}
+    .work-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      padding: 4px 8px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 3px;
+      color: var(--text-dim);
+      letter-spacing: 0.04em;
+    }
 
-.contact-hed em {
-  font-style: italic;
-  color: var(--muted);
-}
+    .work-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent-teal);
+      text-decoration: none;
+      margin-bottom: 16px;
+      transition: gap 0.2s;
+    }
 
-.contact-body {
-  font-size: 13px;
-  color: #7a7870;
-  line-height: 1.85;
-}
+    .work-link:hover { gap: 10px; }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-}
+    /* BACKGROUND */
+    .bg-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
 
-.clink {
-  background: var(--card);
-  padding: 20px 18px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  transition: background 0.2s;
-}
-.clink:hover { background: var(--bg3); }
+    .bg-item {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      gap: 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
 
-.clink-label {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--muted);
-}
+    .bg-item:last-child { border-bottom: none; }
 
-.clink-val {
-  font-size: 12px;
-  color: var(--accent);
-}
+    .bg-period {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.05em;
+      padding-top: 4px;
+    }
 
-/* ── FOOTER ── */
-footer {
-  padding: 20px 56px;
-  border-top: 1px solid var(--rule);
-  display: flex;
-  justify-content: space-between;
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.06em;
-}
+    .bg-content h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 600;
+      color: #EEF5FF;
+      margin-bottom: 4px;
+    }
 
-/* ── ANIMATIONS ── */
-@keyframes up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
+    .bg-company {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.5s ease;
-}
-.reveal.visible { opacity: 1; transform: translateY(0); }
+    .bg-content p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.75;
+    }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 860px) {
-  nav { padding: 16px 24px; }
-  .nav-links { display: none; }
-  .hero { grid-template-columns: 1fr; min-height: auto; }
-  .hero-left { padding: 80px 24px 40px; border-right: none; border-bottom: 1px solid var(--rule); }
-  .hero-right { padding: 40px 24px; }
-  .section { padding: 56px 24px; }
-  .cards { grid-template-columns: 1fr; }
-  .work-item { grid-template-columns: 1fr; gap: 8px; }
-  .work-year { padding-top: 0; }
-  .work-tags { flex-direction: row; align-items: flex-start; flex-wrap: wrap; }
-  .exp-item { grid-template-columns: 1fr; gap: 10px; }
-  .stats-row { grid-template-columns: repeat(2,1fr); }
-  .contact-section { grid-template-columns: 1fr; gap: 36px; padding: 56px 24px; }
-  .contact-grid { grid-template-columns: 1fr 1fr; }
-  footer { padding: 16px 24px; flex-direction: column; gap: 4px; }
-}
-</style>
+    .bg-highlight {
+      margin-top: 10px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-teal);
+      letter-spacing: 0.02em;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding: 80px 48px;
+    }
+
+    .contact-section p {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+      letter-spacing: 0.04em;
+    }
+
+    .contact-section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      color: #EEF5FF;
+      letter-spacing: -0.02em;
+      margin-bottom: 36px;
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 32px 48px;
+      border-top: 1px solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    /* FADE IN */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 18px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 24px 64px; }
+      section { padding: 64px 24px; }
+      .work-grid { grid-template-columns: 1fr; }
+      .venn-tags { grid-template-columns: 1fr; }
+      .venn-svg-wrap { max-width: 320px; }
+      .bg-item { grid-template-columns: 1fr; gap: 8px; }
+      .contact-section { padding: 64px 24px; }
+      footer { padding: 24px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in { opacity: 1; transform: none; transition: none; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav id="nav">
-  <span class="nav-logo">asaf mohammed</span>
-  <ul class="nav-links">
-    <li><a href="#skills">Skills</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</nav>
+  <nav>
+    <a href="#" class="nav-logo">AM_</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#background">Background</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="hero-left">
-    <div class="hero-tag">GTM Engineer · Data · Automation · AI</div>
-    <h1 class="hero-name">Asaf Mohammed</h1>
-    <p class="hero-sub">Revenue infrastructure, <br>built from the inside out.</p>
-    <p class="hero-body">
-      Five years building data and automation systems inside SaaS companies. Most recently at <strong>ZoomInfo</strong> — where I built AI tools and enrichment pipelines for the Sales and CS teams that run on GTM intelligence for a living.<br><br>
-      I also ship independently. <strong>PingHook</strong> is a webhook notification microservice I built and run as a product.
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">GTM Engineer · Data · Automation · AI</div>
+    <h1>Revenue infrastructure,<br /><span>built from the inside out.</span></h1>
+    <p class="hero-sub">Five years building data and automation systems inside SaaS companies.</p>
+    <p class="hero-desc">
+      Most recently at <strong>ZoomInfo</strong> — where I built AI tools and enrichment pipelines
+      for the Sales and CS teams that run on GTM intelligence for a living.<br /><br />
+      I also ship independently. <strong>PingHook</strong> is a webhook notification
+      microservice I built and run as a product.
     </p>
     <div class="hero-links">
-      <a href="https://pinghook.dev" target="_blank" class="hlink">pinghook.dev</a>
-      <a href="https://linkedin.com" target="_blank" class="hlink">LinkedIn</a>
-      <a href="https://github.com" target="_blank" class="hlink">GitHub</a>
-      <a href="mailto:asafmohammed21@gmail.com" class="hlink">Email</a>
+      <a href="https://pinghook.dev" target="_blank" class="link-pill link-pill-primary">
+        ↗ pinghook.dev
+      </a>
+      <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="link-pill link-pill-secondary">
+        LinkedIn
+      </a>
+      <a href="https://github.com/asafmd" target="_blank" class="link-pill link-pill-secondary">
+        GitHub
+      </a>
+      <a href="mailto:asafmohammed21@gmail.com" class="link-pill link-pill-secondary">
+        Email
+      </a>
     </div>
   </div>
 
-  <div class="hero-right">
-    <div class="venn-wrap">
-      <div class="venn-title">Where GTM Engineering lives — and where I fit</div>
-      <svg viewBox="0 0 680 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;">
-        <defs>
-          <style>
-            .vt { font-family: 'JetBrains Mono', monospace; font-size: 10px; fill: #6a6860; letter-spacing: 0.14em; }
-            .vl { font-family: 'JetBrains Mono', monospace; font-size: 12px; font-weight: 500; }
-            .vc { font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 500; letter-spacing: 0.1em; }
-            .vs { font-family: 'Sora', sans-serif; font-size: 10.5px; fill: #6a6860; }
-            .vm { font-family: 'Sora', sans-serif; font-size: 11px; font-weight: 500; }
-          </style>
-        </defs>
-        <text x="170" y="22" text-anchor="middle" class="vt">WHAT GTM ENGINEERING DEMANDS</text>
-        <text x="510" y="22" text-anchor="middle" class="vt">WHAT I BRING</text>
-        <line x1="340" y1="14" x2="340" y2="410" stroke="#2a2a26" stroke-width="1"/>
-        <circle cx="118" cy="158" r="95" fill="#d4a843" fill-opacity="0.05"/>
-        <circle cx="223" cy="158" r="95" fill="#6b8fd4" fill-opacity="0.05"/>
-        <circle cx="170" cy="248" r="95" fill="#4a9b7a" fill-opacity="0.05"/>
-        <circle cx="118" cy="158" r="95" fill="none" stroke="#d4a843" stroke-width="1.2" stroke-opacity="0.6"/>
-        <circle cx="223" cy="158" r="95" fill="none" stroke="#6b8fd4" stroke-width="1.2" stroke-opacity="0.6"/>
-        <circle cx="170" cy="248" r="95" fill="none" stroke="#4a9b7a" stroke-width="1.2" stroke-opacity="0.6"/>
-        <text x="62"  y="106" text-anchor="middle" class="vl" fill="#d4a843">Data</text>
-        <text x="278" y="106" text-anchor="middle" class="vl" fill="#6b8fd4">AI</text>
-        <text x="170" y="370" text-anchor="middle" class="vl" fill="#4a9b7a">Automation</text>
-        <text x="170" y="192" text-anchor="middle" class="vc" fill="#eceae4">GTM Engg</text>
-        <circle cx="458" cy="158" r="95" fill="#d4a843" fill-opacity="0.05"/>
-        <circle cx="563" cy="158" r="95" fill="#6b8fd4" fill-opacity="0.05"/>
-        <circle cx="510" cy="248" r="95" fill="#4a9b7a" fill-opacity="0.05"/>
-        <circle cx="458" cy="158" r="95" fill="none" stroke="#d4a843" stroke-width="1.2" stroke-opacity="0.6"/>
-        <circle cx="563" cy="158" r="95" fill="none" stroke="#6b8fd4" stroke-width="1.2" stroke-opacity="0.6"/>
-        <circle cx="510" cy="248" r="95" fill="none" stroke="#4a9b7a" stroke-width="1.2" stroke-opacity="0.6"/>
-        <text x="393" y="96"  text-anchor="middle" class="vm" fill="#d4a843">ZoomInfo</text>
-        <text x="393" y="111" text-anchor="middle" class="vs">Snowflake · SQL</text>
-        <text x="393" y="124" text-anchor="middle" class="vs">Tableau · Power BI</text>
-        <text x="628" y="96"  text-anchor="middle" class="vm" fill="#6b8fd4">Gemini · LLMs</text>
-        <text x="628" y="111" text-anchor="middle" class="vs">Prompt Engineering</text>
-        <text x="628" y="124" text-anchor="middle" class="vs">RAG · AI Agents</text>
-        <text x="510" y="360" text-anchor="middle" class="vm" fill="#4a9b7a">n8n · Zapier</text>
-        <text x="510" y="374" text-anchor="middle" class="vs">Webhooks · FastAPI</text>
-        <text x="510" y="388" text-anchor="middle" class="vs">HubSpot · Salesforce · PingHook</text>
-        <text x="510" y="192" text-anchor="middle" class="vc" fill="#eceae4">Asaf</text>
-      </svg>
+  <!-- VENN -->
+  <section id="skills">
+    <div class="section-label">Where GTM Engineering lives — and where I fit</div>
+    <div class="venn-container fade-in">
+
+      <div class="venn-svg-wrap">
+        <!--
+          Three circles of radius 130, centres forming an equilateral triangle.
+          Triangle side = 130 (overlap ~= radius/2 for clear intersection).
+          Centroid of the three centres sits at the true visual middle.
+
+          Circle centres:
+            Data (top-left):  cx=185, cy=155
+            GTM  (top-right): cx=335, cy=155
+            AI   (bottom):    cx=260, cy=285
+
+          SVG viewBox: 0 0 520 430
+        -->
+        <svg viewBox="0 0 520 430" xmlns="http://www.w3.org/2000/svg" aria-label="Venn diagram: Asaf sits at the intersection of Data, GTM, and AI">
+          <defs>
+            <!-- Radial glows for each circle fill -->
+            <radialGradient id="grad-data" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#4A9EFF" stop-opacity="0.13"/>
+              <stop offset="100%" stop-color="#4A9EFF" stop-opacity="0.03"/>
+            </radialGradient>
+            <radialGradient id="grad-gtm" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#64FFDA" stop-opacity="0.11"/>
+              <stop offset="100%" stop-color="#64FFDA" stop-opacity="0.02"/>
+            </radialGradient>
+            <radialGradient id="grad-ai" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#A078FF" stop-opacity="0.12"/>
+              <stop offset="100%" stop-color="#A078FF" stop-opacity="0.02"/>
+            </radialGradient>
+            <!-- Center glow -->
+            <radialGradient id="grad-center" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffffff" stop-opacity="0.06"/>
+              <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Circle fills -->
+          <circle cx="185" cy="155" r="130" fill="url(#grad-data)"/>
+          <circle cx="335" cy="155" r="130" fill="url(#grad-gtm)"/>
+          <circle cx="260" cy="285" r="130" fill="url(#grad-ai)"/>
+
+          <!-- Circle strokes -->
+          <circle cx="185" cy="155" r="130" fill="none" stroke="#4A9EFF" stroke-width="1.5" stroke-opacity="0.35"/>
+          <circle cx="335" cy="155" r="130" fill="none" stroke="#64FFDA" stroke-width="1.5" stroke-opacity="0.28"/>
+          <circle cx="260" cy="285" r="130" fill="none" stroke="#A078FF" stroke-width="1.5" stroke-opacity="0.3"/>
+
+          <!-- Center intersection highlight -->
+          <circle cx="260" cy="215" r="38" fill="url(#grad-center)"/>
+
+          <!-- Category labels — placed in the outer zone of each circle, away from overlaps -->
+          <!-- DATA: upper-left outer zone -->
+          <text x="118" y="100" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#4A9EFF" opacity="0.9">DATA</text>
+
+          <!-- GTM: upper-right outer zone -->
+          <text x="402" y="100" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#64FFDA" opacity="0.9">GTM</text>
+
+          <!-- AI: bottom outer zone -->
+          <text x="260" y="400" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="15" font-weight="700" letter-spacing="2" fill="#A078FF" opacity="0.9">AI</text>
+
+          <!-- Center label: true centroid of the three circle centres = (260, 198) -->
+          <text x="260" y="208" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="17" font-weight="700" fill="#EEF5FF">Asaf</text>
+          <text x="260" y="226" text-anchor="middle" font-family="Space Mono, monospace" font-size="10" fill="#6B8099" letter-spacing="2">GTM ENGG</text>
+        </svg>
+      </div>
+
+      <div class="venn-tags">
+        <div class="venn-tag-group data">
+          <h4>Data</h4>
+          <div class="tag-list">
+            <span class="tag-item">Snowflake · SQL</span>
+            <span class="tag-item">Tableau · Power BI</span>
+            <span class="tag-item">PySpark · Python</span>
+            <span class="tag-item">ZoomInfo</span>
+          </div>
+        </div>
+        <div class="venn-tag-group gtm">
+          <h4>GTM</h4>
+          <div class="tag-list">
+            <span class="tag-item">HubSpot · Salesforce</span>
+            <span class="tag-item">n8n · Webhooks</span>
+            <span class="tag-item">FastAPI · REST APIs</span>
+            <span class="tag-item">PingHook</span>
+          </div>
+        </div>
+        <div class="venn-tag-group ai">
+          <h4>AI</h4>
+          <div class="tag-list">
+            <span class="tag-item">Gemini · LLMs</span>
+            <span class="tag-item">Prompt Engineering</span>
+            <span class="tag-item">RAG · AI Agents</span>
+            <span class="tag-item">Claude Code</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="section-label">Things I've built</div>
+    <div class="work-grid">
+
+      <div class="work-card fade-in">
+        <div class="work-card-meta">
+          <span class="work-year">2026 · Personal</span>
+          <span class="work-badge badge-personal">Pipeline</span>
+        </div>
+        <h3>AI Lead Triage & Personalization Engine</h3>
+        <p>End-to-end inbound pipeline — webhook ingestion, parallel AI enrichment, Enterprise / Mid-Market / SMB tiering via Gemini, company normalisation, and real-time Telegram alerts via PingHook on every submission.</p>
+        <div class="work-tags">
+          <span class="work-tag">n8n</span>
+          <span class="work-tag">Gemini LLM</span>
+          <span class="work-tag">Airtable</span>
+          <span class="work-tag">PingHook</span>
+        </div>
+      </div>
+
+      <div class="work-card fade-in">
+        <div class="work-card-meta">
+          <span class="work-year">2025–26 · Live SaaS</span>
+          <span class="work-badge badge-live">Live</span>
+        </div>
+        <h3>PingHook — Webhook Notification Microservice</h3>
+        <p>Production-ready service delivering real-time GTM event signals from CRMs and automation platforms to Telegram. Label-based routing, rate limiting, payload validation, 56-test suite. Zero-config — no signup, no dashboard. Full product lifecycle ownership.</p>
+        <a href="https://pinghook.dev" target="_blank" class="work-link">pinghook.dev →</a>
+        <div class="work-tags">
+          <span class="work-tag">FastAPI</span>
+          <span class="work-tag">Python</span>
+          <span class="work-tag">Supabase</span>
+        </div>
+      </div>
+
+      <div class="work-card fade-in">
+        <div class="work-card-meta">
+          <span class="work-year">2023–25 · ZoomInfo</span>
+          <span class="work-badge badge-internal">Internal</span>
+        </div>
+        <h3>AI Data Assistant for Account Managers</h3>
+        <p>Natural language → Snowflake SQL. Account Managers query live customer data without filing analyst requests. Designed schema, engineered prompts, migrated from Streamlit to Slack bot for zero-friction adoption. Adopted team-wide without a single training session.</p>
+        <div class="work-outcome">Hours to seconds · Zero onboarding · Team-wide adoption</div>
+        <div class="work-tags">
+          <span class="work-tag">Snowflake</span>
+          <span class="work-tag">LLM Prompting</span>
+          <span class="work-tag">Slack Bot</span>
+        </div>
+      </div>
+
+      <div class="work-card fade-in">
+        <div class="work-card-meta">
+          <span class="work-year">2023–25 · ZoomInfo</span>
+          <span class="work-badge badge-internal">Internal</span>
+        </div>
+        <h3>Revenue Credit Audit Dashboard</h3>
+        <p>Tableau dashboard tracking free credits across the customer base — segmented by sales stage, customer tier (SMB → Strategic), and credit reason. Time-series analysis surfacing cost patterns for Revenue Operations retention and expansion decisions.</p>
+        <div class="work-outcome">Directly informed churn and expansion strategy</div>
+        <div class="work-tags">
+          <span class="work-tag">Tableau</span>
+          <span class="work-tag">Snowflake</span>
+          <span class="work-tag">SQL</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BACKGROUND -->
+  <section id="background">
+    <div class="section-label">Background</div>
+    <div class="bg-grid">
+
+      <div class="bg-item fade-in">
+        <div class="bg-period">2023 – 2025</div>
+        <div class="bg-content">
+          <h3>Data Analyst — GTM Intelligence Platform</h3>
+          <div class="bg-company">ZoomInfo</div>
+          <p>AI tooling, enrichment pipelines, and revenue analytics inside a GTM data platform. Optimised Snowflake SQL powering GTM workflows for Sales and Customer Success. Built revenue analytics dashboards. Automated reporting with Python and PySpark. Delivered 100+ data enrichments for lead qualification and pipeline acceleration. Cross-functional with Sales, CS, and Product.</p>
+          <div class="bg-highlight">→ Built AI-powered internal tooling adopted across the Account Management team</div>
+        </div>
+      </div>
+
+      <div class="bg-item fade-in">
+        <div class="bg-period">2020 – 2023</div>
+        <div class="bg-content">
+          <h3>Senior Research Analyst</h3>
+          <div class="bg-company">Altrata</div>
+          <p>Market and business intelligence reports with Sales and Client Success. SQL analysis and recurring reporting. Data migration with warehousing and governance exposure. Mentored junior analysts, established reporting best practices.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <div class="contact-section" id="contact">
+    <p>Based in Chennai, India</p>
+    <h2>Get in touch.</h2>
+    <div class="contact-links">
+      <a href="mailto:asafmohammed21@gmail.com" class="link-pill link-pill-primary">
+        asafmohammed21@gmail.com
+      </a>
+      <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="link-pill link-pill-secondary">
+        LinkedIn →
+      </a>
+      <a href="https://pinghook.dev" target="_blank" class="link-pill link-pill-secondary">
+        pinghook.dev →
+      </a>
+      <a href="https://github.com/asafmd" target="_blank" class="link-pill link-pill-secondary">
+        GitHub →
+      </a>
     </div>
   </div>
-</div>
 
-<!-- SKILLS -->
-<section class="section" id="skills">
-  <div class="section-header reveal">
-    <span class="section-eyebrow">01</span>
-    <h2 class="section-title">What I work with</h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="cards reveal">
-    <div class="card">
-      <div class="card-icon" style="background:rgba(212,168,67,0.1);">⚡</div>
-      <div class="card-title">Signal & Webhook Infrastructure</div>
-      <p class="card-body">Real-time event pipelines that capture GTM signals — form fills, CRM triggers, product events — and route them instantly without manual intervention.</p>
-      <div class="card-tools">
-        <span class="tag">Webhooks</span><span class="tag">FastAPI</span><span class="tag">REST APIs</span><span class="tag">n8n</span><span class="tag">PingHook</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(107,143,212,0.1);">🤖</div>
-      <div class="card-title">AI-Powered Lead Intelligence</div>
-      <p class="card-body">LLM-driven enrichment and qualification — automatic lead tiering, company normalisation, personalised outreach hooks generated at scale without manual research.</p>
-      <div class="card-tools">
-        <span class="tag">Gemini</span><span class="tag">Prompt Engineering</span><span class="tag">RAG</span><span class="tag">AI Agents</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,155,122,0.1);">🔄</div>
-      <div class="card-title">Workflow Automation</div>
-      <p class="card-body">Multi-step automation connecting the GTM stack end-to-end — from inbound signal to enriched, routed, and notified rep — without duct tape between tools.</p>
-      <div class="card-tools">
-        <span class="tag">n8n</span><span class="tag">Zapier</span><span class="tag">Python</span><span class="tag">JavaScript</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(212,168,67,0.1);">🏗️</div>
-      <div class="card-title">CRM Architecture</div>
-      <p class="card-body">Data models, lifecycle stages, and routing logic that keep CRM clean, pipeline accurate, and reps focused on the right leads at the right time.</p>
-      <div class="card-tools">
-        <span class="tag">HubSpot</span><span class="tag">Salesforce</span><span class="tag">ZoomInfo SalesOS</span><span class="tag">Airtable</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(107,143,212,0.1);">📊</div>
-      <div class="card-title">Revenue Analytics</div>
-      <p class="card-body">Turning CRM, product, and campaign data into decisions — pipeline velocity, conversion tracking, customer segmentation, and churn signals from Snowflake to Tableau.</p>
-      <div class="card-tools">
-        <span class="tag">Snowflake</span><span class="tag">SQL</span><span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">PySpark</span>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-icon" style="background:rgba(74,155,122,0.1);">🚀</div>
-      <div class="card-title">Product Engineering</div>
-      <p class="card-body">Building and shipping GTM tooling end-to-end — schema design, API build, security, testing, deployment. Not just configuring existing tools but creating new ones.</p>
-      <div class="card-tools">
-        <span class="tag">FastAPI</span><span class="tag">Supabase</span><span class="tag">Python</span><span class="tag">Git</span><span class="tag">Streamlit</span>
-      </div>
-    </div>
-  </div>
+  <footer>
+    Asaf Mohammed · Chennai, India · GTM Engineer · Ex-ZoomInfo · 2026
+  </footer>
 
-  <div class="stats-row reveal">
-    <div class="stat-block">
-      <div class="stat-num">5+</div>
-      <div class="stat-label">Years in GTM data</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-num">85%</div>
-      <div class="stat-label">Sales research time saved</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-num">100+</div>
-      <div class="stat-label">Data enrichments</div>
-    </div>
-    <div class="stat-block">
-      <div class="stat-num">56</div>
-      <div class="stat-label">Test suite — PingHook</div>
-    </div>
-  </div>
-</section>
+  <script>
+    // Fade in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
 
-<!-- WORK -->
-<section class="section" id="work">
-  <div class="section-header reveal">
-    <span class="section-eyebrow">02</span>
-    <h2 class="section-title">Things I've built</h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="work-list">
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
 
-    <div class="work-item reveal">
-      <div class="work-year">2026<br><span style="color:#4a9b7a;font-size:9px;">Personal</span></div>
-      <div>
-        <div class="work-name">AI Lead Triage & Personalization Engine</div>
-        <p class="work-desc">End-to-end inbound pipeline — webhook ingestion, parallel AI enrichment, Enterprise/Mid-Market/SMB tiering via Gemini, company normalisation, and real-time Telegram alerts via PingHook on every submission.</p>
-        <div class="work-result">↓ 85% reduction in sales research time per lead</div>
-      </div>
-      <div class="work-tags">
-        <span class="tag">n8n</span>
-        <span class="tag">Gemini LLM</span>
-        <span class="tag">Airtable</span>
-        <span class="tag">PingHook</span>
-      </div>
-    </div>
-
-    <div class="work-item reveal">
-      <div class="work-year">2025-26<br><span style="color:#4a9b7a;font-size:9px;">Live SaaS</span></div>
-      <div>
-        <div class="work-name">PingHook — Webhook Notification Microservice</div>
-        <p class="work-desc">Production-ready service delivering real-time GTM event signals from CRMs and automation platforms to Telegram. Label-based routing, rate limiting, payload validation, 56-test suite. Zero-config — no signup, no dashboard. Full product lifecycle ownership.</p>
-        <div class="work-result">→ Live at pinghook.dev</div>
-      </div>
-      <div class="work-tags">
-        <span class="tag">FastAPI</span>
-        <span class="tag">Python</span>
-        <span class="tag">Supabase</span>
-      </div>
-    </div>
-
-    <div class="work-item reveal">
-      <div class="work-year">2023–25<br><span style="color:#d4a843;font-size:9px;">ZoomInfo</span></div>
-      <div>
-        <div class="work-name">AI Data Assistant for Account Managers</div>
-        <p class="work-desc">Natural language → Snowflake SQL. Account Managers query live customer data without filing analyst requests. Designed schema, engineered prompts, migrated from Streamlit to Slack bot for zero-friction adoption. Adopted team-wide without a single training session.</p>
-        <div class="work-result">↓ Hours to seconds · Zero onboarding · Team-wide adoption</div>
-      </div>
-      <div class="work-tags">
-        <span class="tag">Snowflake</span>
-        <span class="tag">LLM Prompting</span>
-        <span class="tag">Slack Bot</span>
-      </div>
-    </div>
-
-    <div class="work-item reveal">
-      <div class="work-year">2023–25<br><span style="color:#d4a843;font-size:9px;">ZoomInfo</span></div>
-      <div>
-        <div class="work-name">Revenue Credit Audit Dashboard</div>
-        <p class="work-desc">Tableau dashboard tracking free credits across the customer base — segmented by sales stage, customer tier (SMB → Strategic), and credit reason. Time-series analysis surfacing cost patterns for Revenue Operations retention and expansion decisions.</p>
-        <div class="work-result">→ Directly informed churn and expansion strategy</div>
-      </div>
-      <div class="work-tags">
-        <span class="tag">Tableau</span>
-        <span class="tag">Snowflake SQL</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- EXPERIENCE -->
-<section class="section" id="experience">
-  <div class="section-header reveal">
-    <span class="section-eyebrow">03</span>
-    <h2 class="section-title">Background</h2>
-    <div class="section-rule"></div>
-  </div>
-  <div class="exp-list">
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">2026 – Present</div>
-        <div class="exp-co">Lloyds List Intelligence</div>
-        <div class="exp-role">Data Services Analyst</div>
-      </div>
-      <div>
-        <div class="exp-title">Data operations & API integration support</div>
-        <p class="exp-body">Structured data delivery per client specifications and SLA. REST API troubleshooting and data sync debugging via Postman across integrated systems.</p>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">2023 – 2025</div>
-        <div class="exp-co">ZoomInfo</div>
-        <div class="exp-role">Data Analyst<br>GTM Intelligence Platform</div>
-      </div>
-      <div>
-        <div class="exp-title">AI tooling, enrichment pipelines, and revenue analytics inside a GTM data platform</div>
-        <p class="exp-body">Optimised Snowflake SQL powering GTM workflows for Sales and Customer Success. Built revenue analytics dashboards. Automated reporting with Python and PySpark — 20% reduction in manual effort. Delivered 100+ data enrichments for lead qualification and pipeline acceleration. Cross-functional with Sales, CS, and Product.</p>
-        <div class="exp-note">→ Built AI-powered internal tooling adopted across the Account Management team</div>
-      </div>
-    </div>
-
-    <div class="exp-item reveal">
-      <div class="exp-left">
-        <div class="exp-period">2020 – 2023</div>
-        <div class="exp-co">Altrata</div>
-        <div class="exp-role">Senior Research Analyst</div>
-      </div>
-      <div>
-        <div class="exp-title">Market intelligence, SQL analysis, team mentorship</div>
-        <p class="exp-body">Market and business intelligence reports with Sales and Client Success. SQL analysis and recurring reporting. Data migration with warehousing and governance exposure. Mentored junior analysts, established reporting best practices.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="reveal">
-    <h2 class="contact-hed">Get in touch.<br><em>No agenda needed.</em></h2>
-    <p class="contact-body" style="margin-top:16px;">
-      Based in Chennai, India. If something here is relevant to what you're working on, feel free to reach out directly.
-    </p>
-  </div>
-  <div class="contact-grid reveal">
-    <a href="mailto:asafmohammed21@gmail.com" class="clink">
-      <span class="clink-label">Email</span>
-      <span class="clink-val">asafmohammed21@gmail.com</span>
-    </a>
-    <a href="https://linkedin.com/in/asaf-mohammed" target="_blank" class="clink">
-      <span class="clink-label">LinkedIn</span>
-      <span class="clink-val">Connect →</span>
-    </a>
-    <a href="https://pinghook.dev" target="_blank" class="clink">
-      <span class="clink-label">Live Product</span>
-      <span class="clink-val">pinghook.dev →</span>
-    </a>
-    <a href="https://github.com/asafmd" target="_blank" class="clink">
-      <span class="clink-label">GitHub</span>
-      <span class="clink-val">View code →</span>
-    </a>
-  </div>
-</section>
-
-<footer>
-  <span>Asaf Mohammed · Chennai, India</span>
-  <span>GTM Engineer · Ex-ZoomInfo · 2026</span>
-</footer>
-
-<script>
-  // Nav scroll
-  const nav = document.getElementById('nav');
-  window.addEventListener('scroll', () => {
-    nav.classList.toggle('scrolled', window.scrollY > 30);
-  });
-
-  // Reveal
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  }, { threshold: 0.07 });
-  reveals.forEach(el => obs.observe(el));
-</script>
 </body>
 </html>
